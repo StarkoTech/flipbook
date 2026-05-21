@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Mobile responsive support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSE Insights Realistic Flipbook</title>
+
+    <!-- Our CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>CSE Insights</h1>
+        <p>S. B. Jain Institute of Technology, Management & Research, Nagpur</p>
+    </header>
+
+    <main>
+
+        <section class="book-area">
+
+            <!-- Left side navigation buttons -->
+            <div class="nav-column left">
+                <button class="nav-btn" id="firstBtn">«</button>
+                <button class="nav-btn" id="prevBtn">&lt;</button>
+            </div>
+
+            <!-- Flipbook container -->
+            <div class="book-wrapper">
+
+                <!-- StPageFlip will convert these page divs into real flipbook pages -->
+                <div id="flipbook">
+
+                    <div class="page1">
+                        <img src="assets/pages/page-01.jpg" alt="Page 1">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-02.jpg" alt="Page 2">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-03.jpg" alt="Page 3">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-04.jpg" alt="Page 4">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-05.jpg" alt="Page 5">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-06.jpg" alt="Page 6">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-07.jpg" alt="Page 7">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-08.jpg" alt="Page 8">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-09.jpg" alt="Page 9">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-10.jpg" alt="Page 10">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-11.jpg" alt="Page 11">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-12.jpg" alt="Page 12">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-13.jpg" alt="Page 13">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-14.jpg" alt="Page 14">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-15.jpg" alt="Page 15">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-16.jpg" alt="Page 16">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-17.jpg" alt="Page 17">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-18.jpg" alt="Page 18">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-19.jpg" alt="Page 19">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-20.jpg" alt="Page 20">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-21.jpg" alt="Page 21">
+                    </div>
+
+                    <div class="page">
+                        <img src="assets/pages/page-22.jpg" alt="Page 22">
+                    </div>
+
+                    
+
+                </div>
+            </div>
+
+            <!-- Right side navigation buttons -->
+            <div class="nav-column right">
+                <button class="nav-btn" id="lastBtn">»</button>
+                <button class="nav-btn" id="nextBtn">&gt;</button>
+            </div>
+
+        </section>
+
+        <!-- Bottom controls -->
+        <section class="controls">
+            <p id="pageNumber">Page 1 of 22</p>
+            <input type="range" id="pageSlider" min="1" max="22" value="1">
+        </section>
+
+    </main>
+
+    <!-- StPageFlip library CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+    <!-- Our JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
