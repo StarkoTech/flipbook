@@ -5,6 +5,7 @@ const totalPages = 22;
 const flipbookElement = document.getElementById("flipbook");
 const pageNumber = document.getElementById("pageNumber");
 const pageSlider = document.getElementById("pageSlider");
+const pageTurnSound = document.getElementById("pageTurnSound");
 
 const firstBtn = document.getElementById("firstBtn");
 const prevBtn = document.getElementById("prevBtn");
@@ -83,28 +84,39 @@ function updateControls() {
     updateCoverShift();
 }
 
+// Play page turn sound effect
+function playPageTurnSound() {
+    pageTurnSound.currentTime = 0;
+    pageTurnSound.play();
+}
+
 // Next page button
 nextBtn.addEventListener("click", function () {
+    playPageTurnSound();
     pageFlip.flipNext();
 });
 
 // Previous page button
 prevBtn.addEventListener("click", function () {
+    playPageTurnSound();
     pageFlip.flipPrev();
 });
 
 // First page button
 firstBtn.addEventListener("click", function () {
+    playPageTurnSound();    
     pageFlip.turnToPage(0);
 });
 
 // Last page button
 lastBtn.addEventListener("click", function () {
+    playPageTurnSound();
     pageFlip.turnToPage(totalPages - 1);
 });
 
 // Slider page change
 pageSlider.addEventListener("change", function () {
+    playPageTurnSound();
     const selectedPage = Number(pageSlider.value);
 
     // Convert normal page number to index
