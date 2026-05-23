@@ -40,8 +40,16 @@ main {
     justify-content: center;
     align-items: center;
     gap: 22px;
-    padding: 25px 10px 10px;
+    margin-left: 25px;
+
 }
+
+.nav-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
 
 /* Left and right button columns */
 .nav-column {
@@ -132,7 +140,7 @@ main {
 
 /* Bottom controls */
 .controls {
-    margin: 18px auto 20px;
+    margin: 10px auto 10px;
     width: 100%;
     max-width: 900px;
     padding: 0 12px;

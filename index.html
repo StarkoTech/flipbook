@@ -22,13 +22,15 @@
 
     <main>
 
-        <section class="book-area">
-
-            <!-- Left side navigation buttons -->
-            <div class="nav-column left">
+        <section class="controls">
                 <button class="nav-btn" id="firstBtn">«</button>
                 <button class="nav-btn" id="prevBtn">&lt;</button>
-            </div>
+                <button class="nav-btn" id="autoBtn">▶</button>
+                <button class="nav-btn" id="nextBtn">&gt;</button>
+                <button class="nav-btn" id="lastBtn">»</button>
+        </section>
+
+        <section class="book-area">
 
             <!-- Flipbook container -->
             <div class="book-wrapper">
@@ -123,18 +125,13 @@
                     <div class="page">
                         <img src="assets/pages/page-22.jpg" alt="Page 22">
                     </div>
-
-                    
-
                 </div>
             </div>
 
             <!-- Right side navigation buttons -->
             <div class="nav-column right">
-                <button class="nav-btn" id="lastBtn">»</button>
-                <button class="nav-btn" id="nextBtn">&gt;</button>
-            </div>
 
+            </div>
         </section>
 
         <!-- Bottom controls -->
@@ -146,7 +143,11 @@
     </main>
 
     <!-- Page turn sound effect -->
-    <audio id="pageTurnSound" src="assets/sounds/oxidvideos-page-flip-smaller-page-453027.mp3" preload="auto"></audio>
+    <audio id="FlipSound" src="assets/sounds/oxidvideos-page-flip-smaller-page-453027.mp3" preload="auto"></audio>
+
+    <!-- front and back Page turn sound effect -->
+    <audio id="FirstAndLastPageFlipSound" src="assets/sounds/u_viypcpsnud-page_flip_1-389273.mp3"
+        preload="auto"></audio>
 
     <!-- StPageFlip library CDN -->
     <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>

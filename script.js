@@ -5,7 +5,6 @@ const totalPages = 22;
 const flipbookElement = document.getElementById("flipbook");
 const pageNumber = document.getElementById("pageNumber");
 const pageSlider = document.getElementById("pageSlider");
-const pageTurnSound = document.getElementById("pageTurnSound");
 
 const firstBtn = document.getElementById("firstBtn");
 const prevBtn = document.getElementById("prevBtn");
@@ -43,8 +42,10 @@ const pageFlip = new St.PageFlip(flipbookElement, {
     mobileScrollSupport: false,
 
     // Page corner click area size
-    clickEventForward: true
+    clickEventForward: true,
+
 });
+
 
 // Load all pages from HTML
 pageFlip.loadFromHTML(document.querySelectorAll(".page, .page1"));
@@ -75,48 +76,50 @@ function updateControls() {
     pageSlider.value = currentPage;
 
     // Disable buttons at first and last page
-    firstBtn.disabled = currentPage === 1;
-    prevBtn.disabled = currentPage === 1;
+    firstBtn.hidden = currentPage === 1;
+    prevBtn.hidden = currentPage === 1;
 
-    nextBtn.disabled = currentPage === totalPages;
-    lastBtn.disabled = currentPage === totalPages;
+    nextBtn.hidden = currentPage === totalPages;
+    lastBtn.hidden = currentPage === totalPages;
 
     updateCoverShift();
 }
 
 // Play page turn sound effect
 function playPageTurnSound() {
-    pageTurnSound.currentTime = 0;
-    pageTurnSound.play();
+    FlipSound.currentTime = 0;
+    FlipSound.play();
+}
+
+// Play front and backpage turn sound effect
+function FirstAndLastPageSound() {
+    FirstAndLastPageFlipSound.currentTime = 0;
+    FirstAndLastPageFlipSound.play();
 }
 
 // Next page button
 nextBtn.addEventListener("click", function () {
-    playPageTurnSound();
     pageFlip.flipNext();
 });
 
 // Previous page button
 prevBtn.addEventListener("click", function () {
-    playPageTurnSound();
     pageFlip.flipPrev();
 });
 
 // First page button
 firstBtn.addEventListener("click", function () {
-    playPageTurnSound();    
     pageFlip.turnToPage(0);
 });
 
 // Last page button
 lastBtn.addEventListener("click", function () {
-    playPageTurnSound();
     pageFlip.turnToPage(totalPages - 1);
 });
 
 // Slider page change
 pageSlider.addEventListener("change", function () {
-    playPageTurnSound();
+
     const selectedPage = Number(pageSlider.value);
 
     // Convert normal page number to index
@@ -124,9 +127,63 @@ pageSlider.addEventListener("change", function () {
 });
 
 // This event runs after every page flip
-pageFlip.on("flip", function () {
+pageFlip.on("flip", function (pageIndexObj) {
+    const currentPage = pageIndexObj.data
+    if (currentPage === 0) {
+        FirstAndLastPageSound();
+    } else if (currentPage === totalPages - 1) {
+        FirstAndLastPageSound();
+    } else {
+        playPageTurnSound();
+    }
     updateControls();
 });
+
+function autoFlip() {
+    return
+}
+
+// let autoFlipInterval = null;
+autoBtn.addEventListener("click", function () {
+    if (autoBtn.textContent === "▶") {
+        autoBtn.textContent = "⏸";
+        pageFlip.flipNext();
+        autoFlipInterval = setInterval(() => {
+            if (pageFlip.getCurrentPageIndex() < totalPages - 1) {
+                pageFlip.flipNext();
+            } else if (pageFlip.getCurrentPageIndex() == totalPages - 1) {
+                autoBtn.textContent = "↻";
+                clearInterval(autoFlipInterval);
+            }
+            else {
+                clearInterval(autoFlipInterval);
+                autoBtn.textContent = "▶";
+            }
+        }, 2000);
+    }
+    else if (autoBtn.textContent == "↻") {
+        autoBtn.textContent = "⏸";
+        clearInterval(autoFlipInterval);
+        firstBtn.click();
+        autoFlipInterval = setInterval(() => {
+            if (pageFlip.getCurrentPageIndex() < totalPages - 1) {
+                pageFlip.flipNext();
+            } else if (pageFlip.getCurrentPageIndex() == totalPages - 1) {
+                autoBtn.textContent = "↻";
+                clearInterval(autoFlipInterval);
+            }
+            else {
+                clearInterval(autoFlipInterval);
+                autoBtn.textContent = "▶";
+            }
+        }, 2000);
+    }
+    else {
+        autoBtn.textContent = "▶";
+        clearInterval(autoFlipInterval);
+    }
+});
+
 
 // This event runs when book layout changes
 pageFlip.on("changeState", function () {
