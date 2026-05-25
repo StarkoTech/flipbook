@@ -139,11 +139,23 @@ main {
 }
 
 /* Bottom controls */
-.controls {
+.controls{
     margin: 10px auto 10px;
     width: 100%;
     max-width: 900px;
     padding: 0 12px;
+}
+
+.controls button {
+    padding: 10px 16px;
+    width: auto;
+    border: none;
+    border-radius: 6px;
+    background: #1f2937;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
 #pageNumber {
